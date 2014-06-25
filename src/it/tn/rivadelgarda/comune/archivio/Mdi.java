@@ -25,8 +25,6 @@ import com.axiastudio.pypapi.ui.IForm;
 import com.axiastudio.pypapi.ui.IUIFile;
 import com.axiastudio.pypapi.ui.Util;
 import com.axiastudio.pypapi.ui.Window;
-import it.tn.rivadelgarda.comune.archivio.entities.IUtente;
-import it.tn.rivadelgarda.comune.archivio.entities.Utente;
 import com.trolltech.qt.core.QObject;
 import com.trolltech.qt.core.QSignalMapper;
 import com.trolltech.qt.gui.*;
@@ -152,15 +150,12 @@ public class Mdi extends QMainWindow implements IMdi {
         this.tree.setColumnCount(2);
         this.tree.setHeaderLabel("Gestione archivio");
         this.tree.setColumnHidden(1, true);
-        
-        Utente autenticato = (Utente) Register.queryUtility(IUtente.class);
 
         /* scrivania */
         QTreeWidgetItem itemScrivania = new QTreeWidgetItem(this.tree);
         itemScrivania.setText(0, "Scrivania");
-        itemScrivania.setIcon(0, new QIcon("classpath:com/axiastudio/archivio/resources/house.png"));
+        itemScrivania.setIcon(0, new QIcon("classpath:it/tn/rivadelgarda/comune/archivio/resources/house.png"));
         itemScrivania.setText(1, "SCRIVANIA");
-        itemScrivania.setDisabled(!autenticato.getOperatoreprotocollo());
 
         this.tree.activated.connect(this, "runTask()");
         this.tree.setMinimumWidth(200);
@@ -174,7 +169,7 @@ public class Mdi extends QMainWindow implements IMdi {
         }
 
         String mode = this.tree.currentItem().text(2);
-        /* cambio password */
+        /* chianata form speciale */
         if( "XXXXXX".equals(formName) ){
 /*            Xxxxx form = new Xxxx();
             this.workspace.addSubWindow(form);
@@ -225,7 +220,6 @@ public class Mdi extends QMainWindow implements IMdi {
                     e.printStackTrace();
                 }
             } else if( mode.startsWith("NAMEDQUERY") ){
-                Utente autenticato = (Utente) Register.queryUtility(IUtente.class);
                 String[] split = mode.split(":");
                 String namedQueryName = split[1];
 
