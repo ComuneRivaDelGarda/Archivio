@@ -21,6 +21,8 @@ import com.axiastudio.pypapi.Application;
 import com.axiastudio.pypapi.Register;
 import com.axiastudio.pypapi.db.Database;
 import com.axiastudio.pypapi.db.IDatabase;
+import com.axiastudio.pypapi.ui.Window;
+import it.tn.rivadelgarda.comune.archivio.entities.Protocollo;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,12 +52,7 @@ public class Start {
         Database db = (Database) Register.queryUtility(IDatabase.class);
         configure(app, propertiesStream);
 
-        // login su Postgres
-        CheckPGUser checkPGUser = new CheckPGUser();
-        checkPGUser.setJdbcUrl((String) app.getConfigItem("jdbc.url"));
-        Register.registerUtility(checkPGUser, ICheckLogin.class);
 
-        /* login */
         Mdi mdi = new Mdi();
         mdi.showMaximized();
         mdi.setWindowTitle("Archivio");
@@ -139,6 +136,13 @@ public class Start {
 
         // jdbc
         app.setConfigItem("jdbc.url", jdbcUrl);
+
+        Register.registerForm(db.getEntityManagerFactory(),
+                "classpath:it/tn/rivadelgarda/comune/archivio/forms/Protocollo.ui",
+                Protocollo.class,
+                Window.class
+        );
+
 
     }
 
