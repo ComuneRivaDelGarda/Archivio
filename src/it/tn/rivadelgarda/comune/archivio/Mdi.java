@@ -161,7 +161,7 @@ public class Mdi extends QMainWindow implements IMdi {
         QTreeWidgetItem itemProtocollo = new QTreeWidgetItem(this.tree);
         itemProtocollo.setText(0, "Protocollo");
         itemProtocollo.setText(1, "it.tn.rivadelgarda.comune.archivio.entities.Protocollo");
-        itemProtocollo.setText(2, "NEW");
+        //itemProtocollo.setText(2, "NEW");
 
         this.tree.activated.connect(this, "runTask()");
         this.tree.setMinimumWidth(200);

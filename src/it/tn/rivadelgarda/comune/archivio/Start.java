@@ -19,10 +19,12 @@ package it.tn.rivadelgarda.comune.archivio;
 
 import com.axiastudio.pypapi.Application;
 import com.axiastudio.pypapi.Register;
+import com.axiastudio.pypapi.Resolver;
 import com.axiastudio.pypapi.db.Database;
 import com.axiastudio.pypapi.db.IDatabase;
 import com.axiastudio.pypapi.ui.Window;
 import it.tn.rivadelgarda.comune.archivio.entities.Protocollo;
+import it.tn.rivadelgarda.comune.archivio.forms.ProtocolloCallbacks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -137,12 +139,16 @@ public class Start {
         // jdbc
         app.setConfigItem("jdbc.url", jdbcUrl);
 
-        Register.registerForm(db.getEntityManagerFactory(),
+        // Protocollo
+        Register.registerForm
+                (
+                db.getEntityManagerFactory(),
                 "classpath:it/tn/rivadelgarda/comune/archivio/forms/Protocollo.ui",
                 Protocollo.class,
                 Window.class
-        );
+                );
 
+        Register.registerCallbacks(Resolver.callbacksFromClass(ProtocolloCallbacks.class));
 
     }
 

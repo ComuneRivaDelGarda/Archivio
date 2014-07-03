@@ -1,10 +1,11 @@
 package it.tn.rivadelgarda.comune.archivio.entities;
 
-import com.sun.javafx.beans.IDProperty;
-import com.sun.org.glassfish.gmbal.IncludeSubclass;
+
+import it.tn.rivadelgarda.comune.archivio.entities.TipoProtocollo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by utente on 30/06/14.
@@ -23,14 +24,31 @@ public class Protocollo implements Serializable
     @Column
     private String oggetto = "";
     @Column
-    private String tipo = "ENTRATA";
+    @Enumerated(EnumType.STRING)
+    private TipoProtocollo tipo = TipoProtocollo.ENTRATA;
     @Column
-    private Integer anno = 1850;
+    private Integer anno = 0;
     @Column
-    private Long sportello = 43L;
+    private Long sportello;
+
+    @Column(name="dataprotocollo", insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataprotocollo;
+
+    public Date getDataprotocollo() {
+        return dataprotocollo;
+    }
+
+    public void setDataprotocollo(Date dataprotocollo) {
+        this.dataprotocollo = dataprotocollo;
+    }
 
     public String getIddocumento() {
         return iddocumento;
+    }
+
+    public TipoProtocollo getTipo() {
+        return tipo;
     }
 
     public void setIddocumento(String iddocumento) {
@@ -53,11 +71,7 @@ public class Protocollo implements Serializable
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
+    public void setTipo(TipoProtocollo tipo) {
         this.tipo = tipo;
     }
 
