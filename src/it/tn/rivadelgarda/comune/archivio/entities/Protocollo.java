@@ -31,7 +31,7 @@ public class Protocollo implements Serializable
     @Column
     private Long sportello;
 
-    @Column(name="dataprotocollo", insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name="dataprotocollo")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataprotocollo;
 
