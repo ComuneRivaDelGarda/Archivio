@@ -96,5 +96,5 @@ public class Protocollo implements Serializable
     public String toString() {
         return "Protocollo{" + "iddocumento='" + iddocumento + '\'' + '}';
     }
-    
+
 }
