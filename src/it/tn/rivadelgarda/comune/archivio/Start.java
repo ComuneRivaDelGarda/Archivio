@@ -149,7 +149,7 @@ public class Start {
                 );
 
         Register.registerCallbacks(Resolver.callbacksFromClass(ProtocolloCallbacks.class));
-        
+
     }
 
 }

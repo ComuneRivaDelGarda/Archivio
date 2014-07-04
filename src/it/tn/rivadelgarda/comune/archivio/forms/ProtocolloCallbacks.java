@@ -88,6 +88,12 @@ public class ProtocolloCallbacks
             res = false;
         }
 
+        if (protocollo.getConvalidaprotocollo() != null && protocollo.getConvalidaprotocollo())
+        {
+            msg += "Protocollo in sola lettura! \n";
+            res = false;
+        }
+
         if(res == false )
         {
             return new Validation(false, msg);

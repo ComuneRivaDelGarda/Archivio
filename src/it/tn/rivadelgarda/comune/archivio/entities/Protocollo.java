@@ -36,6 +36,9 @@ public class Protocollo implements Serializable
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataprotocollo;
 
+    @Column
+    private Boolean convalidaprotocollo;
+
     public Date getDataprotocollo() {
         return dataprotocollo;
     }
@@ -90,6 +93,14 @@ public class Protocollo implements Serializable
 
     public void setSportello(Ufficio sportello) {
         this.sportello = sportello;
+    }
+
+    public Boolean getConvalidaprotocollo() {
+        return convalidaprotocollo;
+    }
+
+    public void setConvalidaprotocollo(Boolean convalidaprotocollo) {
+        this.convalidaprotocollo = convalidaprotocollo;
     }
 
     @Override

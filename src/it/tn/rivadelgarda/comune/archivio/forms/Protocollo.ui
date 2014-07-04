@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
+    <width>587</width>
     <height>299</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>inserimento vecchi protocolli</string>
   </property>
-  <property name="column" stdset="0">
-   <string>sportello</string>
+  <property name="nodelete" stdset="0">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3" rowminimumheight="0,0,1">
@@ -42,13 +42,6 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Protocollo:</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="2">
        <widget class="QLineEdit" name="lineEdit">
         <property name="column" stdset="0">
@@ -71,8 +64,40 @@
         <property name="displayFormat">
          <string>dd/MM/yyyy</string>
         </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
         <property name="column" stdset="0">
          <string>dataprotocollo</string>
+        </property>
+        <property name="search" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Protocollo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QCheckBox" name="checkBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Convalidato</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="tristate">
+         <bool>false</bool>
+        </property>
+        <property name="column" stdset="0">
+         <string>convalidaprotocollo</string>
         </property>
        </widget>
       </item>
@@ -145,7 +170,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>comboBox</tabstop>
   <tabstop>lineEdit</tabstop>
+  <tabstop>dateEdit</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>checkBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>
