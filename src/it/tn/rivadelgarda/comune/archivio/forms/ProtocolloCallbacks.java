@@ -81,13 +81,7 @@ public class ProtocolloCallbacks
             msg += "Data maggiore di 25/05/1996. \n";
             res = false;
         }
-        /*
-        if( ! (protocollo.getIddocumento().compareTo(maxProtocollo) == -1) )
-        {
-            msg += "idprotocollo maggiore di 199600012454. \n";
-            res = false;
-        }
-        */
+
         if(  (Long.parseLong(protocollo.getIddocumento()) >= Long.parseLong(maxProtocollo) ) )
         {
             msg += "idprotocollo maggiore o uguale di 199600012454. \n";

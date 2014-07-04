@@ -3,6 +3,7 @@
   <persistence-unit name="SuitePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>it.tn.rivadelgarda.comune.archivio.entities.Protocollo</class>
+      <class>it.tn.rivadelgarda.comune.archivio.entities.Ufficio</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/suite"/>
       <property name="javax.persistence.jdbc.password" value=""/>

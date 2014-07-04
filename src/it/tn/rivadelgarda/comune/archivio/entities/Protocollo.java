@@ -28,8 +28,9 @@ public class Protocollo implements Serializable
     private TipoProtocollo tipo = TipoProtocollo.ENTRATA;
     @Column
     private Integer anno = 0;
-    @Column
-    private Long sportello;
+    @JoinColumn(name = "sportello", referencedColumnName = "id")
+    @ManyToOne
+    private Ufficio sportello;
 
     @Column(name="dataprotocollo")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -83,11 +84,11 @@ public class Protocollo implements Serializable
         this.anno = anno;
     }
 
-    public Long getSportello() {
+    public Ufficio getSportello() {
         return sportello;
     }
 
-    public void setSportello(Long sportello) {
+    public void setSportello(Ufficio sportello) {
         this.sportello = sportello;
     }
 
