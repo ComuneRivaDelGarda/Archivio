@@ -24,6 +24,7 @@ import com.axiastudio.pypapi.db.Database;
 import com.axiastudio.pypapi.db.IDatabase;
 import com.axiastudio.pypapi.ui.Window;
 import it.tn.rivadelgarda.comune.archivio.entities.Protocollo;
+import it.tn.rivadelgarda.comune.archivio.entities.Ufficio;
 import it.tn.rivadelgarda.comune.archivio.forms.ProtocolloCallbacks;
 
 import java.io.IOException;
@@ -140,12 +141,20 @@ public class Start {
         app.setConfigItem("jdbc.url", jdbcUrl);
 
         // Protocollo
+
         Register.registerForm
                 (
-                db.getEntityManagerFactory(),
-                "classpath:it/tn/rivadelgarda/comune/archivio/forms/Protocollo.ui",
-                Protocollo.class,
-                Window.class
+                        db.getEntityManagerFactory(),
+                        "classpath:it/tn/rivadelgarda/comune/archivio/forms/Protocollo.ui",
+                        Protocollo.class,
+                        Window.class
+                );
+        Register.registerForm
+                (
+                        db.getEntityManagerFactory(),
+                        "classpath:it/tn/rivadelgarda/comune/archivio/forms/Utente.ui",
+                        Ufficio.class,
+                        Window.class
                 );
 
         Register.registerCallbacks(Resolver.callbacksFromClass(ProtocolloCallbacks.class));

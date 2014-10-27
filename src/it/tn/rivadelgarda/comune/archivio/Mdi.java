@@ -152,9 +152,10 @@ public class Mdi extends QMainWindow implements IMdi {
         this.tree.setColumnHidden(1, true);
 
         QTreeWidgetItem itemProtocollo = new QTreeWidgetItem(this.tree);
+        itemProtocollo.setIcon(0, new QIcon("classpath:it/tn/rivadelgarda/comune/archivio/resources/email.png"));
         itemProtocollo.setText(0, "Protocollo");
         itemProtocollo.setText(1, "it.tn.rivadelgarda.comune.archivio.entities.Protocollo");
-        //itemProtocollo.setText(2, "NEW");
+        itemProtocollo.setText(2, "NEW");
 
         this.tree.activated.connect(this, "runTask()");
         this.tree.setMinimumWidth(200);
