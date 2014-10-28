@@ -1,4 +1,4 @@
-package it.tn.rivadelgarda.comune.archivio;
+package it.tn.rivadelgarda.comune.archivio.login;
 
 
 import java.sql.Connection;

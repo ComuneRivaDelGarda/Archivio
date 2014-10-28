@@ -1,4 +1,4 @@
-package it.tn.rivadelgarda.comune.archivio.entities;
+package it.tn.rivadelgarda.comune.archivio.base.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -47,14 +47,15 @@ public class Ufficio implements Serializable
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Ufficio ufficio = (Ufficio) o;
-
-        if (id != null ? !id.equals(ufficio.id) : ufficio.id != null) return false;
-
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Ufficio)) {
+            return false;
+        }
+        Ufficio other = (Ufficio) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
         return true;
     }
 

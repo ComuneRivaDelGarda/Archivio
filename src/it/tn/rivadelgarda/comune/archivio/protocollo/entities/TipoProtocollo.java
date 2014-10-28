@@ -1,4 +1,4 @@
-package it.tn.rivadelgarda.comune.archivio.entities;
+package it.tn.rivadelgarda.comune.archivio.protocollo.entities;
 
 /**
  * Created by utente on 02/07/14.

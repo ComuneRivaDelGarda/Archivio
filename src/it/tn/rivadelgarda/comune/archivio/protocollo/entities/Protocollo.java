@@ -1,7 +1,9 @@
-package it.tn.rivadelgarda.comune.archivio.entities;
+package it.tn.rivadelgarda.comune.archivio.protocollo.entities;
 
 
-import it.tn.rivadelgarda.comune.archivio.entities.TipoProtocollo;
+import it.tn.rivadelgarda.comune.archivio.ITimeStamped;
+import it.tn.rivadelgarda.comune.archivio.TimeStampedListener;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,8 +15,9 @@ import java.util.Date;
 
 @Entity
 @Table(schema = "protocollo")
+@EntityListeners(TimeStampedListener.class)
 @SequenceGenerator(name = "genprotocollo", sequenceName = "protocollo.protocollo_id_seq", initialValue = 1, allocationSize = 1)
-public class Protocollo implements Serializable
+public class Protocollo implements Serializable, ITimeStamped
 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genprotocollo")
@@ -31,13 +34,24 @@ public class Protocollo implements Serializable
     @JoinColumn(name = "sportello", referencedColumnName = "id")
     @ManyToOne
     private Ufficio sportello;
-
     @Column(name="dataprotocollo")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataprotocollo;
-
     @Column
     private Boolean convalidaprotocollo = Boolean.FALSE;
+
+    /* timestamped */
+    @Column(name="rec_creato", insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date recordcreato;
+    @Column(name="rec_creato_da")
+    private String recordcreatoda;
+    @Column(name="rec_modificato")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date recordmodificato;
+    @Column(name="rec_modificato_da")
+    private String recordmodificatoda;
+
 
     public Date getDataprotocollo() {
         return dataprotocollo;
@@ -103,6 +117,38 @@ public class Protocollo implements Serializable
         this.convalidaprotocollo = convalidaprotocollo;
     }
 
+    public Date getRecordcreato() {
+        return recordcreato;
+    }
+
+    public void setRecordcreato(Date recordcreato) {
+        this.recordcreato = recordcreato;
+    }
+
+    public String getRecordcreatoda() {
+        return recordcreatoda;
+    }
+
+    public void setRecordcreatoda(String recordcreatoda) {
+        this.recordcreatoda = recordcreatoda;
+    }
+
+    public Date getRecordmodificato() {
+        return recordmodificato;
+    }
+
+    public void setRecordmodificato(Date recordmodificato) {
+        this.recordmodificato = recordmodificato;
+    }
+
+    public String getRecordmodificatoda() {
+        return recordmodificatoda;
+    }
+
+    public void setRecordmodificatoda(String recordmodificatoda) {
+        this.recordmodificatoda = recordmodificatoda;
+    }
+
     @Override
     public String toString() {
         return "Protocollo{" + "iddocumento='" + iddocumento + '\'' + '}';
@@ -118,7 +164,7 @@ public class Protocollo implements Serializable
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Protocollo1)) {
+        if (!(object instanceof Protocollo)) {
             return false;
         }
         Protocollo other = (Protocollo) object;

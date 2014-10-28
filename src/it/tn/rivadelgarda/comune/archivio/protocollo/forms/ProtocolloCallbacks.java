@@ -1,18 +1,13 @@
-package it.tn.rivadelgarda.comune.archivio.forms;
+package it.tn.rivadelgarda.comune.archivio.protocollo.forms;
 
 import com.axiastudio.pypapi.annotations.Callback;
 import com.axiastudio.pypapi.annotations.CallbackType;
 import com.axiastudio.pypapi.db.Validation;
-import com.axiastudio.pypapi.ui.BooleanItemField;
-import com.axiastudio.pypapi.ui.IntegerItemField;
-import com.axiastudio.pypapi.ui.StringItemField;
-import it.tn.rivadelgarda.comune.archivio.entities.Protocollo;
-import sun.plugin2.message.Message;
+import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**

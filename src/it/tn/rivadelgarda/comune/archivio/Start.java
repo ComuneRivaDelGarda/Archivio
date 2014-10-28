@@ -23,9 +23,12 @@ import com.axiastudio.pypapi.Resolver;
 import com.axiastudio.pypapi.db.Database;
 import com.axiastudio.pypapi.db.IDatabase;
 import com.axiastudio.pypapi.ui.Window;
-import it.tn.rivadelgarda.comune.archivio.entities.Protocollo;
-import it.tn.rivadelgarda.comune.archivio.entities.Ufficio;
-import it.tn.rivadelgarda.comune.archivio.forms.ProtocolloCallbacks;
+import it.tn.rivadelgarda.comune.archivio.login.CheckPGUser;
+import it.tn.rivadelgarda.comune.archivio.login.ICheckLogin;
+import it.tn.rivadelgarda.comune.archivio.login.Login;
+import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
+import it.tn.rivadelgarda.comune.archivio.protocollo.forms.ProtocolloCallbacks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,13 +59,18 @@ public class Start {
         configure(app, propertiesStream);
 
 
-        Mdi mdi = new Mdi();
-        mdi.showMaximized();
-        mdi.setWindowTitle("Archivio");
-        mdi.show();
+        Login login = new Login();
+        login.setWindowTitle("Archivio");
+        int res = login.exec();
+        if( res == 1 ) {
+            Mdi mdi = new Mdi();
+            mdi.showMaximized();
+            mdi.setWindowTitle("Archivio");
+            mdi.show();
 
-        app.setCustomApplicationName("Archivio");
-        app.exec();
+            app.setCustomApplicationName("Archivio");
+            app.exec();
+        }
 
         System.exit(0);
     }
@@ -140,19 +148,23 @@ public class Start {
         // jdbc
         app.setConfigItem("jdbc.url", jdbcUrl);
 
-        // Protocollo
+        // login su Postgres
+        CheckPGUser checkPGUser = new CheckPGUser();
+        checkPGUser.setJdbcUrl((String) app.getConfigItem("jdbc.url"));
+        Register.registerUtility(checkPGUser, ICheckLogin.class);
 
+        // Protocollo
         Register.registerForm
                 (
                         db.getEntityManagerFactory(),
-                        "classpath:it/tn/rivadelgarda/comune/archivio/forms/Protocollo.ui",
+                        "classpath:it/tn/rivadelgarda/comune/archivio/protocollo/forms/Protocollo.ui",
                         Protocollo.class,
                         Window.class
                 );
         Register.registerForm
                 (
                         db.getEntityManagerFactory(),
-                        "classpath:it/tn/rivadelgarda/comune/archivio/forms/Utente.ui",
+                        null,
                         Ufficio.class,
                         Window.class
                 );
