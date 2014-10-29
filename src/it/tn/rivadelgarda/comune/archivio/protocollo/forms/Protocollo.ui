@@ -16,6 +16,9 @@
   <property name="nodelete" stdset="0">
    <bool>true</bool>
   </property>
+  <property name="searchcolumns" stdset="0">
+   <string>&gt;iddocumento&lt;,&gt;tipo&lt;,&gt;dataprotocollo&lt;,&lt;oggettop&gt;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -168,6 +171,9 @@
          <string>oggetto</string>
         </property>
         <property name="search" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="private" stdset="0">
          <bool>true</bool>
         </property>
        </widget>

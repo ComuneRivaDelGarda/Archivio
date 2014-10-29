@@ -26,10 +26,11 @@ import com.axiastudio.pypapi.ui.Window;
 import it.tn.rivadelgarda.comune.archivio.login.CheckPGUser;
 import it.tn.rivadelgarda.comune.archivio.login.ICheckLogin;
 import it.tn.rivadelgarda.comune.archivio.login.Login;
+import it.tn.rivadelgarda.comune.archivio.protocollo.ProtocolloPrivate;
 import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
 import it.tn.rivadelgarda.comune.archivio.protocollo.forms.FormProtocollo;
-import it.tn.rivadelgarda.comune.archivio.protocollo.forms.ProtocolloCallbacks;
+import it.tn.rivadelgarda.comune.archivio.protocollo.ProtocolloCallbacks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -172,6 +173,7 @@ public class Start {
                 );
 
         Register.registerCallbacks(Resolver.callbacksFromClass(ProtocolloCallbacks.class));
+        Register.registerPrivates(Resolver.privatesFromClass(ProtocolloPrivate.class));
 
     }
 

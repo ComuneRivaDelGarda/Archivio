@@ -1,8 +1,12 @@
-package it.tn.rivadelgarda.comune.archivio.protocollo.forms;
+package it.tn.rivadelgarda.comune.archivio.protocollo;
 
+import com.axiastudio.pypapi.Register;
 import com.axiastudio.pypapi.annotations.Callback;
 import com.axiastudio.pypapi.annotations.CallbackType;
 import com.axiastudio.pypapi.db.Validation;
+import it.tn.rivadelgarda.comune.archivio.ProfiloUtente;
+import it.tn.rivadelgarda.comune.archivio.base.entities.IUtente;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Utente;
 import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 
 import java.text.DateFormat;
@@ -24,6 +28,15 @@ public class ProtocolloCallbacks
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         final Date maxData = sdf.parse("1996-05-25");
         final String maxProtocollo = "199600012454";
+
+        // L'utente può salvare se supervisore, ricercatore o e inserito nell'ufficio 'sportello'
+        Utente autenticato = (Utente) Register.queryUtility(IUtente.class);
+        ProfiloUtente profilo = new ProfiloUtente();
+        if ( !(autenticato.getSupervisoreprotocollo() || autenticato.getRicercatoreprotocollo() ||
+                profilo.inTSportello(protocollo, autenticato))) {
+            msg += "Non si ha l'autorizzazione per salvare il protocollo.\n";
+            return new Validation(false, msg);
+        }
 
         //Controllo che sportello non sia vuoto
         if (protocollo.getSportello() == null)

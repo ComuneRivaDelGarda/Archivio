@@ -1,9 +1,13 @@
 package it.tn.rivadelgarda.comune.archivio.protocollo.entities;
 
 
+import com.axiastudio.pypapi.Register;
 import it.tn.rivadelgarda.comune.archivio.ITimeStamped;
+import it.tn.rivadelgarda.comune.archivio.ProfiloUtente;
 import it.tn.rivadelgarda.comune.archivio.TimeStampedListener;
+import it.tn.rivadelgarda.comune.archivio.base.entities.IUtente;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Utente;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -52,6 +56,18 @@ public class Protocollo implements Serializable, ITimeStamped
     @Column(name="rec_modificato_da")
     private String recordmodificatoda;
 
+    /* transient */
+    @Transient
+    private Ufficio tSportello;
+
+    public Ufficio getTSportello() {
+        return tSportello;
+    }
+
+    @PostLoad
+    private void saveTransients() {
+        tSportello = sportello;
+    }
 
     public Date getDataprotocollo() {
         return dataprotocollo;
@@ -79,6 +95,19 @@ public class Protocollo implements Serializable, ITimeStamped
 
     public void setOggetto(String oggetto) {
         this.oggetto = oggetto;
+    }
+
+    public String getOggettop() {
+        Utente autenticato = (Utente) Register.queryUtility(IUtente.class);
+        ProfiloUtente profilo = new ProfiloUtente();
+        if (autenticato.getSupervisoreprotocollo() || autenticato.getRicercatoreprotocollo() || profilo.inSportello(this, autenticato)) {
+            return this.getOggetto();
+        }
+        return "RISERVATO";
+    }
+
+    public void setOggettop(String oggetto) {
+        // do nothing
     }
 
     public Long getId() {
