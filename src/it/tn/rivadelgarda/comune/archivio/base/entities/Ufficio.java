@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by utente on 03/07/14.
+ * Created by Comune di Riva del Garda on 03/07/14.
  */
 
 
@@ -19,6 +19,8 @@ public class Ufficio implements Serializable
     private Long id;
     @Column
     private String descrizione;
+    @Column(name="sportello")
+    private Boolean sportello=false;
 
     public String getDescrizione()
     {
@@ -38,6 +40,14 @@ public class Ufficio implements Serializable
     public void setId(Long id)
     {
         this.id = id;
+    }
+
+    public Boolean getSportello() {
+        return sportello;
+    }
+
+    public void setSportello(Boolean sportello) {
+        this.sportello = sportello;
     }
 
     @Override

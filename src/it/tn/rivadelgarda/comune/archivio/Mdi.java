@@ -42,6 +42,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Tiziano Lattisi <tiziano at axiastudio.it>
+ * modificato da Comune di Riva del Garda
  */
 public class Mdi extends QMainWindow implements IMdi {
     

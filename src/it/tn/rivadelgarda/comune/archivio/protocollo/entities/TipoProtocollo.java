@@ -1,7 +1,7 @@
 package it.tn.rivadelgarda.comune.archivio.protocollo.entities;
 
 /**
- * Created by utente on 02/07/14.
+ * @author Tiziano Lattisi <tiziano at axiastudio.it>
  */
 
 public enum TipoProtocollo

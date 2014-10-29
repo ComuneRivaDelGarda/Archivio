@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by utente on 02/07/14.
+ * Created by Comune di riva del Garda on 02/07/14.
  */
 public class ProtocolloCallbacks
 {

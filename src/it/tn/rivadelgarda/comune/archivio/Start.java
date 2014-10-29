@@ -28,6 +28,7 @@ import it.tn.rivadelgarda.comune.archivio.login.ICheckLogin;
 import it.tn.rivadelgarda.comune.archivio.login.Login;
 import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
+import it.tn.rivadelgarda.comune.archivio.protocollo.forms.FormProtocollo;
 import it.tn.rivadelgarda.comune.archivio.protocollo.forms.ProtocolloCallbacks;
 
 import java.io.IOException;
@@ -41,6 +42,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Tiziano Lattisi <tiziano at axiastudio.it>
+ * modificato da Comune di Riva del Garda
  * 
  */
 public class Start {
@@ -159,7 +161,7 @@ public class Start {
                         db.getEntityManagerFactory(),
                         "classpath:it/tn/rivadelgarda/comune/archivio/protocollo/forms/Protocollo.ui",
                         Protocollo.class,
-                        Window.class
+                        FormProtocollo.class
                 );
         Register.registerForm
                 (

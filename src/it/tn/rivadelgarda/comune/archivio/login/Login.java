@@ -19,7 +19,6 @@ package it.tn.rivadelgarda.comune.archivio.login;
 import com.axiastudio.pypapi.Register;
 import com.axiastudio.pypapi.db.Database;
 import com.axiastudio.pypapi.db.IDatabase;
-//import com.axiastudio.suite.base.entities.IUtente;
 import it.tn.rivadelgarda.comune.archivio.base.entities.IUtente;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Utente;
 import com.trolltech.qt.core.Qt;
@@ -48,7 +47,7 @@ public class Login extends QDialog {
 
     public Login() {
         super();
-        this.setWindowIcon(new QIcon("classpath:com/axiastudio/suite/resources/pypapi128.png"));
+        this.setWindowIcon(new QIcon("classpath:it/tn/rivadelgarda/comune/archivio/resources/pypapi128.png"));
         QVBoxLayout layout = new QVBoxLayout();
         QGridLayout gridLayout = new QGridLayout();
         QLabel labelUsername = new QLabel("Utente");
@@ -65,7 +64,7 @@ public class Login extends QDialog {
         QPushButton pushButtonOk = new QPushButton("OK");
         gridLayout.addWidget(pushButtonOk, 2, 1);
         QLabel logo = new QLabel();
-        logo.setPixmap(new QPixmap("classpath:com/axiastudio/suite/resources/pypapi128.png"));
+        logo.setPixmap(new QPixmap("classpath:it/tn/rivadelgarda/comune/archivio/resources/oldpaper_s.png"));
         layout.addWidget(logo, 0, Qt.AlignmentFlag.AlignCenter);
         layout.addLayout(gridLayout);
         this.setLayout(layout);

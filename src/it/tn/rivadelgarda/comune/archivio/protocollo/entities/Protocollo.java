@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by utente on 30/06/14.
+ * Created by Comune di Riva del Garda on 30/06/14.
  */
 
 @Entity
