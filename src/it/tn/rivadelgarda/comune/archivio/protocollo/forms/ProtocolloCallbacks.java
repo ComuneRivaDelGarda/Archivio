@@ -42,7 +42,6 @@ public class ProtocolloCallbacks
         //Controllo che dataprotocollo non sia vuoto
         if( protocollo.getDataprotocollo() == null )
         {
-            System.out.println(protocollo.getDataprotocollo().toString());
             msg += "Devi specificare la data. \n";
             res = false;
         }
@@ -50,7 +49,6 @@ public class ProtocolloCallbacks
         {
             DateFormat df = new SimpleDateFormat("yyyy");
             anno = df.format(protocollo.getDataprotocollo());
-            // System.out.println(anno);
         }
 
         //Controllo lunghezza iddocumento
@@ -73,13 +71,14 @@ public class ProtocolloCallbacks
         //controllo range anno
         if(  protocollo.getDataprotocollo().after(maxData) )
         {
-            msg += "Data maggiore di 25/05/1996. \n";
+            SimpleDateFormat sdfMsg = new SimpleDateFormat("dd/MM/yyyy");
+            msg += "Data maggiore di " + sdfMsg.format(maxData) + ". \n";
             res = false;
         }
 
         if(  (Long.parseLong(protocollo.getIddocumento()) >= Long.parseLong(maxProtocollo) ) )
         {
-            msg += "idprotocollo maggiore o uguale di 199600012454. \n";
+            msg += "idprotocollo maggiore o uguale di " + maxProtocollo + ". \n";
             res = false;
         }
 

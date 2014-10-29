@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>587</width>
-    <height>299</height>
+    <width>671</width>
+    <height>322</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,19 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_3" rowminimumheight="0,0,1">
-    <item row="0" column="0">
-     <layout class="QGridLayout" name="gridLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0,1">
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="column" stdset="0">
+         <string>iddocumento</string>
+        </property>
+        <property name="search" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QComboBox" name="comboBox">
         <property name="column" stdset="0">
@@ -40,16 +50,6 @@
           <string>INTERNO</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="column" stdset="0">
-         <string>iddocumento</string>
-        </property>
-        <property name="search" stdset="0">
-         <bool>true</bool>
-        </property>
        </widget>
       </item>
       <item row="0" column="3">
@@ -75,13 +75,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Protocollo:</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="5">
        <widget class="QCheckBox" name="checkBox">
         <property name="enabled">
@@ -101,18 +94,45 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Protocollo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </item>
-    <item row="1" column="0">
-     <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0">
-      <item row="0" column="0">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,2">
+      <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>Sportello:</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_sportello">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="com.axiastudio.pypapi.ui.widgets.PyPaPiComboBox" name="comboBox_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -133,7 +153,7 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0">
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_2">
@@ -159,21 +179,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>com.axiastudio.pypapi.ui.widgets.PyPaPiDateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>pypapidateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>com.axiastudio.pypapi.ui.widgets.PyPaPiComboBox</class>
    <extends>QComboBox</extends>
    <header>pypapicombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>com.axiastudio.pypapi.ui.widgets.PyPaPiDateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>pypapidateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>comboBox</tabstop>
   <tabstop>lineEdit</tabstop>
   <tabstop>dateEdit</tabstop>
-  <tabstop>comboBox_2</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>checkBox</tabstop>
  </tabstops>

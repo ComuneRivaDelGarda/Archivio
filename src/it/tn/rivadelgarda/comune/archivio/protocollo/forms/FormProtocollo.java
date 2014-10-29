@@ -24,6 +24,7 @@ import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
 import it.tn.rivadelgarda.comune.archivio.base.entities.UfficioUtente;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Utente;
 import com.trolltech.qt.gui.*;
+import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -72,4 +73,18 @@ public class FormProtocollo extends Window {
         return new Store(uffici);
     }
 
+    @Override
+    protected void indexChanged(int row) {
+        super.indexChanged(row);
+        Protocollo protocollo = (Protocollo) this.getContext().getCurrentEntity();
+
+        // sportello
+        QLineEdit lineEdit_sportello = (QLineEdit) this.findChild(QLineEdit.class, "lineEdit_sportello");
+        if( protocollo.getId() == null ){
+            lineEdit_sportello.setText("");
+        } else {
+            lineEdit_sportello.setText(protocollo.getSportello().toString());
+        }
+
+    }
 }
