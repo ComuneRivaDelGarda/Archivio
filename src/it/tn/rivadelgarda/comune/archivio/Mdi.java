@@ -1,6 +1,4 @@
 /*
- * Copyright (C) 2012 AXIA Studio (http://www.axiastudio.com)
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
@@ -40,13 +38,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Tiziano Lattisi <tiziano at axiastudio.it>
  * modificato da Comune di Riva del Garda
  */
 public class Mdi extends QMainWindow implements IMdi {
     
-    private static String ICON = "classpath:com/axiastudio/pypapi/ui/resources/pypapi32.png";
+    private static String ICON = "classpath:it/tn/rivadelgarda/comune/archivio/resources/oldpaper32.png";
     private QMdiArea workspace;
     private QTreeWidget tree;
     private QSystemTrayIcon trayIcon;
@@ -64,7 +61,6 @@ public class Mdi extends QMainWindow implements IMdi {
         this.setWindowIcon(new QIcon(ICON));
         this.createWorkspace();
         this.createTree();
-        //this.createSystemTray();
         this.createMenu();
 
         Register.registerUtility(this, IMdi.class);
@@ -88,7 +84,7 @@ public class Mdi extends QMainWindow implements IMdi {
         actionSeparator = new QAction(this);
         actionSeparator.setSeparator(true);
         
-        menuWindows.aboutToShow.connect(this, "refreshMenuWindows()");     
+        menuWindows.aboutToShow.connect(this, "refreshMenuWindows()");
     }
     
     private void refreshMenuWindows(){
@@ -157,6 +153,12 @@ public class Mdi extends QMainWindow implements IMdi {
         itemProtocollo.setText(0, "Protocollo");
         itemProtocollo.setText(1, "it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo");
         itemProtocollo.setText(2, "NEW");
+
+        QTreeWidgetItem itemPratica = new QTreeWidgetItem(this.tree);
+        itemPratica.setIcon(0, new QIcon("classpath:it/tn/rivadelgarda/comune/archivio/resources/folder.png"));
+        itemPratica.setText(0, "Pratica");
+        itemPratica.setText(1, "it.tn.rivadelgarda.comune.archivio.pratiche.entities.Pratica");
+        itemPratica.setText(2, "NEW");
 
         this.tree.activated.connect(this, "runTask()");
         this.tree.setMinimumWidth(200);
@@ -258,18 +260,30 @@ public class Mdi extends QMainWindow implements IMdi {
                 form.init();
             }
             this.workspace.addSubWindow(form);
-            this.showForm(form);
+            this.showForm(form, 1);
             if( store != null ) {
                 form.getContext().getDirty();
             }
             this.menuWindows.addAction(form.toString());
         }
     }
-    
+
+
     private void showForm(Window form) {
-        if( this.workspace.subWindowList().size()>1 ){
-            form.show();
-        } else {
+        showForm(form, 0);
+    }
+
+// Mode: 0=nessuna preferenza, 1=normale, 2=maximized
+    private void showForm(Window form, Integer mode) {
+        if ( mode==0 ) {
+            if (this.workspace.subWindowList().size() > 1) {
+                form.show();
+            } else {
+                form.showMaximized();
+            }
+        } else if ( mode==1 ){
+            form.showNormal();
+        } else if ( mode==2 ){
             form.showMaximized();
         }
     }

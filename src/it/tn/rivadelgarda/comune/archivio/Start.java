@@ -1,7 +1,4 @@
 /*
- * Copyright (C) 2013 Comune di Riva del Garda
- * (http://www.comune.rivadelgarda.tn.it)
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
@@ -26,6 +23,8 @@ import com.axiastudio.pypapi.ui.Window;
 import it.tn.rivadelgarda.comune.archivio.login.CheckPGUser;
 import it.tn.rivadelgarda.comune.archivio.login.ICheckLogin;
 import it.tn.rivadelgarda.comune.archivio.login.Login;
+import it.tn.rivadelgarda.comune.archivio.pratiche.entities.Pratica;
+import it.tn.rivadelgarda.comune.archivio.pratiche.forms.FormPratica;
 import it.tn.rivadelgarda.comune.archivio.protocollo.ProtocolloPrivate;
 import it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo;
 import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
@@ -167,6 +166,13 @@ public class Start {
         Register.registerForm
                 (
                         db.getEntityManagerFactory(),
+                        "classpath:it/tn/rivadelgarda/comune/archivio/pratiche/forms/pratica.ui",
+                        Pratica.class,
+                        FormPratica.class
+                );
+        Register.registerForm
+                (
+                        db.getEntityManagerFactory(),
                         null,
                         Ufficio.class,
                         Window.class
@@ -174,7 +180,5 @@ public class Start {
 
         Register.registerCallbacks(Resolver.callbacksFromClass(ProtocolloCallbacks.class));
         Register.registerPrivates(Resolver.privatesFromClass(ProtocolloPrivate.class));
-
     }
-
 }

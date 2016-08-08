@@ -1,6 +1,4 @@
 /*
- * Copyright (C) 2012 AXIA Studio (http://www.axiastudio.com)
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
@@ -24,7 +22,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 /**
- *
  * @author Tiziano Lattisi <tiziano at axiastudio.it>
  */
 public class TimeStampedListener {

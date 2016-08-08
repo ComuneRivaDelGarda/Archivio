@@ -1,6 +1,4 @@
 /*
- * Copyright (C) 2013 AXIA Studio (http://www.axiastudio.com)
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
@@ -19,7 +17,6 @@ package it.tn.rivadelgarda.comune.archivio;
 import java.util.Date;
 
 /**
- *
  * @author AXIA Studio (http://www.axiastudio.com)
  */
 public interface ITimeStamped {

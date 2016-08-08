@@ -25,7 +25,7 @@ import java.util.Date;
  * @author Tiziano Lattisi <tiziano at axiastudio.it>
  */
 @Entity
-@Table(schema="BASE")
+@Table(schema="base")
 @SequenceGenerator(name="genufficioutente", sequenceName="base.ufficioutente_id_seq", initialValue=1, allocationSize=1)
 public class UfficioUtente implements Serializable {
     private static final long serialVersionUID = 1L;

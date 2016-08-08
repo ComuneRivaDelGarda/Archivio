@@ -3,9 +3,18 @@
   <persistence-unit name="SuitePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>it.tn.rivadelgarda.comune.archivio.protocollo.entities.Protocollo</class>
+    <class>it.tn.rivadelgarda.comune.archivio.protocollo.entities.Fascicolo</class>
     <class>it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio</class>
     <class>it.tn.rivadelgarda.comune.archivio.base.entities.Utente</class>
     <class>it.tn.rivadelgarda.comune.archivio.base.entities.UfficioUtente</class>
+    <class>it.tn.rivadelgarda.comune.archivio.pratiche.entities.Fase</class>
+    <class>it.tn.rivadelgarda.comune.archivio.pratiche.entities.FasePratica</class>
+    <class>it.tn.rivadelgarda.comune.archivio.pratiche.entities.Pratica</class>
+    <class>it.tn.rivadelgarda.comune.archivio.pratiche.entities.TipoPratica</class>
+    <class>it.tn.rivadelgarda.comune.archivio.pratiche.entities.UtentePratica</class>
+    <class>it.tn.rivadelgarda.comune.archivio.procedimento.entities.FaseProcedimento</class>
+    <class>it.tn.rivadelgarda.comune.archivio.procedimento.entities.Procedimento</class>
+    <class>it.tn.rivadelgarda.comune.archivio.procedimento.entities.TipoPraticaProcedimento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/suite"/>
       <property name="javax.persistence.jdbc.password" value=""/>

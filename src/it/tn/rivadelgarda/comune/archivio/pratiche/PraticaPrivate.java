@@ -1,0 +1,56 @@
+/*
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Afffero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package it.tn.rivadelgarda.comune.archivio.pratiche;
+
+import com.axiastudio.pypapi.Register;
+import com.axiastudio.pypapi.annotations.Private;
+import it.tn.rivadelgarda.comune.archivio.base.entities.IUtente;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Ufficio;
+import it.tn.rivadelgarda.comune.archivio.base.entities.UfficioUtente;
+import it.tn.rivadelgarda.comune.archivio.base.entities.Utente;
+import it.tn.rivadelgarda.comune.archivio.pratiche.entities.Pratica;
+
+/**
+ * @author AXIA Studio (http://www.axiastudio.com)
+ * adattato da Comune di Riva del Garda
+ */
+public class PraticaPrivate {
+    
+    @Private
+    public static Boolean praticaPrivata(Pratica pratica){
+        
+        // Se la pratica non è registrata, sicuramente non è privata
+        if( pratica.getId() == null ){
+            return false;
+        }
+        
+        // Se la pratica non è riservata i suoi dati non sono privati
+        if( !pratica.getRiservata() ){
+            return false;
+        }
+        
+        Utente autenticato = (Utente) Register.queryUtility(IUtente.class);
+        for( UfficioUtente uu: autenticato.getUfficioUtenteCollection() ){
+            Ufficio u = uu.getUfficio();
+            if( u.equals(pratica.getGestione()) || u.equals(pratica.getAttribuzione()) || u.equals(pratica.getUbicazione()) ){
+                if( uu.getRiservato() ){
+                    return false;
+                }
+            } 
+        }
+        
+        return true;
+    }
+}
